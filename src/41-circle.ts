@@ -11,18 +11,23 @@ export {};
  *  - https://www.youtube.com/watch?v=YOlr79NaAtQ (What is THIS in JavaScript? in 100 seconds)
  */
 
-function Circle(radius) {
+
+function Circle(this: Circle, radius: number) {
   this.radius = radius;
-  this.area = function() {};
-  this.perimeter = function() {};
+  this.area = () => {
+    return Math.PI * this.radius * this.radius;
+  };
+  this.perimeter = () => {
+    return 2 * Math.PI * this.radius;
+  };
 }
 
-const c = new Circle(3);
-console.log("Area =", c.area()); // Expected output: Area = 28.27
-console.log("Perimeter =", c.perimeter()); // Expected output: Perimeter = 18.85
+interface Circle {
+  radius: number;
+  area(): number;
+  perimeter(): number;
+}
 
-
-/**
- * This was the last exercise in this repository.
- * Congratulations on getting this far!
- */
+const c = new (Circle as any)(3); // Cast Circle as any to suppress error
+console.log("Area =", c.area().toFixed(2)); // Expected output: Area = 28.27
+console.log("Perimeter =", c.perimeter().toFixed(2)); // Expected output: Perimeter = 18.85

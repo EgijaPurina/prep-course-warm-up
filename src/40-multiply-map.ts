@@ -8,10 +8,18 @@ export {};
  * and recreate the logic yourself.
  */
 
-const map = () => {};
+type MapFunction<T, R> = (value: T, index: number, array: T[]) => R;
+
+const map = <T, R>(arr: T[], callback: MapFunction<T, R>): R[] => {
+  const result: R[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i], i, arr));
+  }
+  return result;
+};
 
 const numbers = [1, 2, 3];
-const doubled = map(numbers, function(number) {
+const doubled = map<number, number>(numbers, function(number) {
   return number * 2;
 });
 console.log(doubled); // Expected result: [2, 4, 6]

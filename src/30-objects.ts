@@ -20,6 +20,8 @@ const books = [
   }
 ];
 
-const getTheTitles = () => {};
+const getTheTitles = (bookList: any) => {
+  return bookList.map((book: any) => book.title);
+};
 
 console.log(getTheTitles(books)); // Expected output: ['4 hour work week', 'Tools of Titans']

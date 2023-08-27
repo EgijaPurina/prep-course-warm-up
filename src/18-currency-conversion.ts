@@ -8,14 +8,23 @@ export {};
  */
 
 // You are allowed to change only this function
-function convertToUSD() {}
+function convertToUSD(price: any, exchangeRate: any): any {
+    if (typeof price !== "number" || typeof exchangeRate !== "number") {
+        throw new Error('Both price and exchange rate must be numbers'); 
+}
+
+const priceInUSD = price * exchangeRate;
+return priceInUSD;
+} 
 
 const product = "You don't know JS";
 const price = 19.99;
-const priceInUSD = convertToUSD(price);
+const exchangeRateToUSD = 1.4;
+
+const priceInUSD = convertToUSD(price, exchangeRateToUSD);
 
 console.log("Product: " + product);
-console.log("Price: $" + priceInUSD);
+console.log("Price: $" + priceInUSD.toFixed(2));
 
 /* Expected output:
 

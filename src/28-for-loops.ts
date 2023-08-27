@@ -9,7 +9,20 @@ export {};
  *  - https://www.youtube.com/watch?v=Kn06785pkJg (JavaScript Loops Made Easy)
 */
 
-function goThroughNumbers(start, end) {}
+function goThroughNumbers(start: any, end: any): any {
+    if (start > end) {
+        console.log('invalid input');
+        return;
+    }
+
+    for (let i = start; i <= end; i++) {
+        if (i % 2 === 0) {
+            console.log('> ${i} - even');
+        } else {
+            console.log('> ${i} - odd');
+        }
+    }
+}
 
 goThroughNumbers(3, 7);
 /* Expected output:

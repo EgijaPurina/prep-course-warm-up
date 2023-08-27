@@ -8,4 +8,13 @@ export {};
  *  - https://javascript.info/array
  */
 
-console.log(stringToArray(["John Doe"])); // Expected output: ['John', 'Doe']
+function stringToArray(inputString: string): string[] {
+
+    const words = inputString.split(' ');
+
+    const filteredWords = words.filter((word: string) => word !== '');
+
+    return filteredWords;
+}
+
+console.log(stringToArray("John Doe")); // Expected output: ['John', 'Doe']

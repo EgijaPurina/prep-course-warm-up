@@ -1,3 +1,5 @@
 export {};
 
-console.log(truncateString("CODELEX", 4)); // Expected output: CODE
+const string = "CODELEX";
+const truncated = string.slice(0, 4);
+console.log(truncated); // Expected output: CODE

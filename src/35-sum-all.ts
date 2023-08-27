@@ -6,6 +6,12 @@ export {};
  *  - 1, 4 will return 1 + 2 + 3 + 4 which is 10
  */
 
-const sumAll = function() {};
+const sumAll = function(start: any, end: any) {
+    let sum = 0;
+  for (let i = start; i <= end; i++) {
+    sum += i;
+  }
+  return sum;
+};
 
 console.log(sumAll(1, 4)); // Expected output: 10

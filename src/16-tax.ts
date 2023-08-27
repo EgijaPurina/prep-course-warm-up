@@ -13,16 +13,20 @@ export {};
  */
 
 // You are allowed to change only this function
-function calculateSalesTax() {}
+function calculateSalesTax(price: number, tax: number) {
+    return tax / 100 * price
+}
 
+
+const tax = 21
 const product = "You don't know JS";
 const price = 19.99;
-const salesTax = calculateSalesTax(price);
+const salesTax = calculateSalesTax(price, tax);
 
 console.log("Product: " + product);
 console.log("Price: £" + price);
-console.log("Sales tax: £" + salesTax);
-console.log("Total: £" + (price + salesTax));
+console.log("Sales tax: £" + salesTax.toFixed(2));
+console.log("Total: £" + (price + salesTax).toFixed(2));
 
 /* Expected output:
 

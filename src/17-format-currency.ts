@@ -9,9 +9,16 @@ export {};
  */
 
 // You are allowed to change only this function
-function formatCurrency() {}
+function formatCurrency(amount: any, currencySymbol = "$", decimalDigits = 2) {
+  if (typeof amount !== "number") {
+      throw new Error("Amount must be a number");
+  }
 
-function calculateSalesTax(price: number) {
+  const formattedAmount = amount.toFixed(decimalDigits);
+  return `${currencySymbol}${formattedAmount}`;
+}
+
+function calculateSalesTax(price: any) {
   return price * 0.21;
 }
 
@@ -19,10 +26,17 @@ const product = "You don't know JS";
 const price = 19.99;
 const salesTax = calculateSalesTax(price);
 
+// Format prices and sales tax using the formatCurrency function
+const formattedPrice = formatCurrency(price);
+const formattedSalesTax = formatCurrency(salesTax);
+const totalPrice = price + salesTax;
+const formattedTotalPrice = formatCurrency(totalPrice);
+
 console.log("Product: " + product);
-console.log("Price: " + formatCurrency(price));
-console.log("Sales tax: " + formatCurrency(salesTax));
-console.log("Total: " + formatCurrency(price + salesTax));
+console.log("Price: " + formattedPrice);
+console.log("Sales tax: " + formattedSalesTax);
+console.log("Total: " + formattedTotalPrice);
+
 
 /* Expected output:
 
